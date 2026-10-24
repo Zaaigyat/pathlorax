@@ -1,738 +1,1409 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#a9ddff">
-<meta name="description" content="Path Lorax helps students discover careers, explore skills, and find work opportunities.">
-<title>Path Lorax | Discover Your Future</title>
+<title>PathLorax | Find Your Path</title>
 
 <style>
 :root {
-  --sky: #b8e2ff;
-  --blue: #4c9be8;
-  --dark-blue: #245b8f;
-  --green: #78c875;
-  --dark-green: #347c48;
-  --cream: #fffdf5;
-  --ink: #263c50;
-  --muted: #64798a;
+  --maroon: #641b2e;
+  --dark-maroon: #3d101d;
+  --gold: #e5b95c;
+  --cream: #fff9ee;
   --white: #ffffff;
-  --shadow: 0 12px 35px #426c8920;
-  --radius: 24px;
+  --text: #29232a;
+  --muted: #706771;
+  --border: #eadfe1;
+  --shadow: 0 8px 24px rgba(61, 16, 29, 0.09);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  color: var(--ink);
-  background: #eef8ff;
-  overflow-x: hidden;
+  padding: 0;
+  scroll-behavior: smooth;
 }
-button, input, select, textarea { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
-a { color: var(--dark-blue); }
-button { cursor: pointer; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 header {
+  background: var(--dark-maroon);
+  color: var(--white);
+  padding: 15px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: #ffffffed;
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid #dcebf4;
+  z-index: 100;
+  box-shadow: 0 3px 14px rgba(0,0,0,.15);
 }
-.nav {
-  max-width: 1200px;
-  padding: 13px 22px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
+
 .logo {
-  font-weight: 1000;
-  font-size: 1.55rem;
-  color: var(--dark-blue);
+  font-size: 1.65rem;
+  font-weight: 900;
   letter-spacing: -1px;
-  white-space: nowrap;
-  cursor: pointer;
+  color: var(--gold);
 }
-.logo span { color: #55a957; }
-.navlinks {
+
+.logo span {
+  color: white;
+}
+
+nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 5px;
-}
-.navlinks button {
-  border: 0;
-  background: transparent;
-  color: #51677a;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: .88rem;
-  transition: .25s;
-}
-.navlinks button:hover, .navlinks button.active {
-  background: #e4f2ff;
-  color: var(--dark-blue);
-  transform: translateY(-2px);
-}
-.menu-toggle { display: none; }
-main { min-height: 70vh; }
-.page {
-  display: none;
-  animation: pageIn .55s cubic-bezier(.2,.7,.2,1) both;
-}
-.page.active { display: block; }
-@keyframes pageIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.container { max-width: 1120px; margin: auto; padding: 52px 22px; }
-.eyebrow {
-  display: inline-block;
-  background: #e1f4df;
-  color: #347647;
-  padding: 7px 13px;
-  border-radius: 100px;
-  font-weight: 800;
-  font-size: .8rem;
-  letter-spacing: .4px;
-}
-h1, h2, h3 { line-height: 1.15; }
-h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); letter-spacing: -2px; margin: 20px 0; }
-h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -1px; margin: 12px 0; }
-h3 { margin-top: 0; }
-p { line-height: 1.75; }
-.muted { color: var(--muted); }
-.hero {
-  min-height: 610px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, #a9dcff 0%, #e4f5ff 75%, #d9f1d2 100%);
-}
-.hero-content {
-  position: relative;
-  z-index: 5;
-  max-width: 1120px;
-  padding: 85px 22px 200px;
-  margin: auto;
-}
-.hero-copy { max-width: 680px; }
-.hero h1 { color: #234e72; }
-.hero p { max-width: 590px; font-size: 1.08rem; color: #456780; }
-.hero strong { color: #2e7545; }
-.btn {
-  display: inline-flex;
-  justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 13px 19px;
-  border: 0;
-  border-radius: 14px;
-  background: var(--blue);
+  flex-wrap: wrap;
+}
+
+nav button {
   color: white;
-  text-decoration: none;
+  border: 0;
+  background: transparent;
+  padding: 8px 11px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: .88rem;
+}
+
+nav button:hover, nav button.active {
+  background: rgba(229,185,92,.17);
+  color: var(--gold);
+}
+
+.page {
+  display: none;
+  min-height: 75vh;
+  animation: appear .25s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {opacity: .5; transform: translateY(4px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+.hero {
+  background: linear-gradient(125deg, var(--dark-maroon), var(--maroon));
+  color: white;
+  padding: 90px 0;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-size: .8rem;
   font-weight: 800;
-  box-shadow: 0 6px 15px #4c9be82c;
-  transition: transform .25s, box-shadow .25s, background .25s;
+  margin-bottom: 14px;
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px #4c9be83d; }
-.btn.green { background: #54a95e; }
-.btn.green:hover { background: #398747; }
-.btn.light { background: white; color: var(--dark-blue); box-shadow: none; border: 1px solid #d6e7f2; }
-.btn.small { padding: 9px 12px; font-size: .86rem; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
-.cloud {
-  position: absolute;
-  width: 130px;
-  height: 40px;
-  background: #ffffffb8;
-  border-radius: 100px;
-  animation: drift 26s linear infinite alternate;
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.7rem);
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
 }
-.cloud:before, .cloud:after {
-  content: "";
-  position: absolute;
-  bottom: 12px;
-  background: inherit;
-  border-radius: 50%;
+
+h1 span, h2 span {
+  color: var(--gold);
 }
-.cloud:before { width: 58px; height: 58px; left: 20px; }
-.cloud:after { width: 76px; height: 76px; left: 55px; }
-.c1 { top: 95px; right: 9%; transform: scale(1.2); }
-.c2 { top: 220px; right: 42%; transform: scale(.7); animation-duration: 34s; }
-.c3 { top: 65px; left: 10%; transform: scale(.55); animation-duration: 32s; }
-@keyframes drift { from { translate: -15px 0; } to { translate: 25px 8px; } }
-.hill {
-  position: absolute;
-  bottom: -100px;
-  width: 75%;
-  height: 250px;
-  border-radius: 50% 50% 0 0;
+
+.hero p {
+  color: #f2e8e8;
+  max-width: 610px;
+  margin-bottom: 25px;
 }
-.hill.one { left: -15%; background: #a8dfa0; transform: rotate(-5deg); }
-.hill.two { right: -18%; background: #78c875; bottom: -130px; transform: rotate(5deg); }
-.hill.three {
-  width: 110%;
-  left: -5%;
-  bottom: -195px;
-  height: 260px;
-  background: #55ad69;
+
+.hero-art {
+  min-height: 290px;
+  border: 1px solid rgba(255,255,255,.19);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.02));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px;
 }
-.hero-plant {
-  position: absolute;
-  z-index: 4;
-  bottom: 62px;
-  right: 15%;
-  font-size: 4rem;
-  filter: drop-shadow(0 4px 4px #285c3420);
-  animation: bob 4s ease-in-out infinite;
+
+.hero-art .symbol {
+  font-size: 6rem;
+  line-height: 1.3;
 }
-@keyframes bob { 50% { transform: translateY(-8px); } }
-.section-heading { margin-bottom: 28px; }
-.section-heading p { max-width: 650px; }
-.grid { display: grid; gap: 20px; }
-.grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
-.grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
-.grid.four { grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+.hero-art h2 {
+  color: var(--gold);
+  font-size: 1.7rem;
+}
+
+.hero-art p {
+  margin: 5px 0 0;
+}
+
+.btn {
+  border: 0;
+  background: var(--gold);
+  color: var(--dark-maroon);
+  padding: 12px 19px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform .2s, opacity .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: .92;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,.6);
+  color: white;
+  background: transparent;
+  margin-left: 8px;
+}
+
+.btn-maroon {
+  background: var(--maroon);
+  color: white;
+}
+
+.section {
+  padding: 65px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  color: var(--maroon);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  max-width: 680px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
 .card {
   background: white;
-  border: 1px solid #e0edf4;
   padding: 25px;
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-radius: 15px;
   box-shadow: var(--shadow);
-  transition: transform .3s, box-shadow .3s;
 }
-.card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px #426c8924; }
-.card p:last-child { margin-bottom: 0; }
-.card-icon { font-size: 2rem; margin-bottom: 12px; }
-.soft-section { background: #f5fbff; }
-.green-section { background: #eaf8e8; }
-.blue-section { background: #e5f4ff; }
-.stat {
-  text-align: center;
-  padding: 24px 12px;
-  background: #ffffffcf;
-  border: 1px solid #ffffff;
-  border-radius: 20px;
+
+.card h3 {
+  color: var(--maroon);
+  margin: 8px 0;
 }
-.stat strong { display: block; font-size: 1.7rem; color: var(--dark-blue); }
-.pill {
-  display: inline-block;
-  padding: 5px 10px;
-  background: #e6f3ff;
-  border-radius: 50px;
-  font-size: .78rem;
-  font-weight: 800;
-  color: var(--dark-blue);
+
+.card p {
+  color: var(--muted);
+  font-size: .95rem;
 }
-.form-card { max-width: 800px; margin: auto; }
-label { display: block; font-weight: 800; margin: 14px 0 7px; }
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #fff0d0;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+
+.card .btn {
+  margin-top: 16px;
+}
+
+.callout {
+  background: #f6e8cc;
+  border-left: 5px solid var(--gold);
+  padding: 22px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.inner-hero {
+  background: var(--maroon);
+  color: white;
+  padding: 50px 0;
+}
+
+.inner-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  margin-bottom: 12px;
+}
+
+.inner-hero p {
+  color: #f4e8e8;
+  max-width: 760px;
+}
+
+.content-section {
+  padding: 45px 0 75px;
+}
+
+.content-section h2 {
+  color: var(--maroon);
+  margin: 24px 0 12px;
+}
+
+.content-section p {
+  margin-bottom: 14px;
+}
+
+.form-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
 input, select, textarea {
   width: 100%;
-  padding: 13px 14px;
-  border: 1px solid #d3e3ed;
-  background: #fff;
-  border-radius: 12px;
-  outline: none;
-  color: var(--ink);
-  transition: border .2s, box-shadow .2s;
+  padding: 12px;
+  border: 1px solid #d8cbd0;
+  border-radius: 8px;
+  margin-bottom: 17px;
+  background: white;
+  color: var(--text);
 }
+
 input:focus, select:focus, textarea:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px #4c9be81c;
+  outline: 2px solid var(--gold);
+  border-color: var(--maroon);
 }
-textarea { min-height: 120px; resize: vertical; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.notice {
-  padding: 14px 17px;
-  border-radius: 13px;
-  background: #fff7df;
-  border: 1px solid #f2e2a7;
-  color: #6e5a21;
-  font-size: .9rem;
+
+fieldset {
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 10px;
+  margin: 15px 0;
 }
-.question {
-  padding: 20px;
-  background: #f7fbff;
-  border: 1px solid #e0edf4;
-  border-radius: 16px;
-  margin: 14px 0;
+
+legend {
+  color: var(--maroon);
+  font-weight: 800;
+  padding: 0 8px;
 }
-.question p { font-weight: 800; margin-top: 0; }
+
 .option {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-weight: 500;
-  margin: 10px 0;
-  cursor: pointer;
+  margin: 9px 0;
+  font-weight: 400;
 }
-.option input { width: auto; margin-top: 5px; }
+
+.option input {
+  width: auto;
+  margin: 5px 0 0;
+}
+
 .result-box {
   display: none;
-  background: #e9f8e7;
-  border: 1px solid #c6e8c3;
-  padding: 25px;
+  background: #fff2d6;
+  border: 1px solid #e5b95c;
+  border-radius: 12px;
+  padding: 22px;
+  margin-top: 22px;
+}
+
+.result-box h3 {
+  color: var(--maroon);
+  margin-bottom: 10px;
+}
+
+.job-card {
+  margin-top: 17px;
+}
+
+.job-card .tag {
+  display: inline-block;
+  background: #f7e7c5;
+  color: var(--maroon);
+  padding: 4px 10px;
   border-radius: 20px;
-  margin-top: 24px;
+  font-size: .8rem;
+  font-weight: 700;
+  margin: 8px 5px 8px 0;
 }
-.result-box.show { display: block; animation: pageIn .5s both; }
-.job-card { display: flex; flex-direction: column; gap: 10px; }
-.job-card .btn { margin-top: auto; align-self: flex-start; }
+
+.job-card .btn {
+  margin: 12px 8px 0 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: 13px;
+}
+
+.team-card h3 {
+  color: var(--maroon);
+  margin-bottom: 6px;
+}
+
+.team-card .role {
+  color: #93691a;
+  font-size: .85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.sdg-banner {
+  background: var(--dark-maroon);
+  color: white;
+  padding: 32px;
+  border-radius: 16px;
+  margin: 25px 0;
+}
+
+.sdg-banner h2 {
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+
+.sdg-banner p {
+  color: #f3e9e9;
+}
+
 footer {
-  background: #244e6a;
-  color: #eaf6ff;
-  padding: 35px 22px;
+  background: var(--dark-maroon);
+  color: white;
+  padding: 35px 6%;
+  margin-top: 20px;
 }
+
 .footer-inner {
   max-width: 1120px;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
 }
-footer a { color: #d3edff; }
-footer p { margin: 6px 0; }
-hr { border: 0; border-top: 1px solid #e0edf4; margin: 25px 0; }
-.empty { padding: 28px; text-align: center; background: white; border-radius: 16px; }
-@media(max-width: 900px) {
-  .grid.four { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .grid.three { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .nav { flex-wrap: wrap; }
-  .navlinks { justify-content: flex-start; }
+
+footer p {
+  color: #d9c9ce;
+  font-size: .9rem;
 }
-@media(max-width: 620px) {
-  .menu-toggle { display: inline-flex; }
-  .nav { padding: 12px 16px; }
-  .navlinks { display: none; width: 100%; flex-direction: column; align-items: stretch; }
-  .navlinks.open { display: flex; }
-  .navlinks button { text-align: left; padding: 12px; }
-  .container { padding: 38px 17px; }
-  .hero-content { padding: 70px 18px 190px; }
-  .hero-plant { right: 7%; bottom: 50px; font-size: 3rem; }
-  .grid.two, .grid.three, .grid.four, .form-row { grid-template-columns: 1fr; }
-  .card { padding: 21px; }
-  h1 { letter-spacing: -1px; }
+
+footer a {
+  color: var(--gold);
 }
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+
+.small-note {
+  color: var(--muted);
+  font-size: .85rem;
+  margin-top: 10px;
+}
+
+ul.styled-list {
+  padding-left: 23px;
+  margin: 12px 0 20px;
+}
+
+ul.styled-list li {
+  margin: 7px 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 28px;
+  color: var(--muted);
+  background: white;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+}
+
+@media (max-width: 800px) {
+  header {
+    position: static;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav button {
+    padding: 8px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    width: 92%;
+  }
+
+  .hero-art {
+    min-height: 220px;
+  }
+
+  .btn-outline {
+    margin: 10px 0 0;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <nav class="nav">
-    <div class="logo" onclick="showPage('home')">Path <span>Lorax</span></div>
-    <button class="btn light menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">☰ Menu</button>
-    <div class="navlinks" id="navlinks">
-      <button class="active" data-page="home" onclick="showPage('home')">Home</button>
-      <button data-page="riasec" onclick="showPage('riasec')">RIASEC Survey</button>
-      <button data-page="jobs" onclick="showPage('jobs')">Job Searcher</button>
-      <button data-page="guides" onclick="showPage('guides')">Job Guides</button>
-      <button data-page="about" onclick="showPage('about')">About Us</button>
-      <button data-page="sdg" onclick="showPage('sdg')">SDG 8</button>
-      <button data-page="resources" onclick="showPage('resources')">Resources</button>
-      <button data-page="contact" onclick="showPage('contact')">Contact</button>
-    </div>
+  <a class="logo" href="#" onclick="showPage('home'); return false;">
+    Path<span>Lorax</span>
+  </a>
+
+  <nav>
+    <button class="active" data-page="home" onclick="showPage('home')">Home</button>
+    <button data-page="survey" onclick="showPage('survey')">RIASEC Survey</button>
+    <button data-page="jobs" onclick="showPage('jobs')">Job Searcher</button>
+    <button data-page="guides" onclick="showPage('guides')">Job Guides</button>
+    <button data-page="about" onclick="showPage('about')">About Us</button>
+    <button data-page="sdg" onclick="showPage('sdg')">SDG 8</button>
+    <button data-page="resources" onclick="showPage('resources')">Resources</button>
+    <button data-page="contact" onclick="showPage('contact')">Contact</button>
   </nav>
 </header>
 
 <main>
+
 <!-- HOME -->
-<section class="page active" id="home">
+<section id="home" class="page active">
   <div class="hero">
-    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-    <div class="hero-content">
-      <div class="hero-copy">
-        <span class="eyebrow">YOUR FUTURE STARTS HERE</span>
-        <h1>Dream big.<br>Discover your <strong>path.</strong></h1>
-        <p>Welcome to Path Lorax, a student-friendly career discovery website where you can explore your interests, learn useful skills, and discover possible work opportunities.</p>
-        <div class="actions">
-          <button class="btn green" onclick="showPage('riasec')">Discover My Career →</button>
-          <button class="btn light" onclick="showPage('jobs')">Explore Opportunities</button>
-        </div>
+    <div class="container hero-content">
+      <div>
+        <div class="eyebrow">Your future starts here</div>
+        <h1>Find Your Path.<br>Build Your <span>Future.</span></h1>
+        <p>
+          Discover careers that match your interests, explore job opportunities,
+          and learn practical skills to prepare for the world of work.
+          Your journey begins with one step.
+        </p>
+        <button class="btn" onclick="showPage('survey')">Discover Your Interests →</button>
+        <button class="btn btn-outline" onclick="showPage('jobs')">Explore Jobs</button>
+      </div>
+
+      <div class="hero-art">
+        <div class="symbol">🧭</div>
+        <h2>Your Path, Your Future</h2>
+        <p>Explore possibilities. Develop skills. Take your next step.</p>
       </div>
     </div>
-    <div class="hill one"></div><div class="hill two"></div><div class="hill three"></div>
-    <div class="hero-plant">🌳</div>
   </div>
 
-  <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow">EXPLORE PATH LORAX</span>
-      <h2>Small steps, brighter futures.</h2>
-      <p class="muted">You don't need to have your entire future figured out today. Start by learning about yourself and exploring the opportunities available to you.</p>
-    </div>
-    <div class="grid three">
-      <div class="card"><div class="card-icon">🧭</div><h3>Discover yourself</h3><p class="muted">Explore your interests and learn about career categories that may fit your preferences.</p><button class="btn light" onclick="showPage('riasec')">Take the survey →</button></div>
-      <div class="card"><div class="card-icon">💼</div><h3>Explore opportunities</h3><p class="muted">Browse example jobs, learn about different roles, and find links to employment resources.</p><button class="btn light" onclick="showPage('jobs')">Explore jobs →</button></div>
-      <div class="card"><div class="card-icon">🌱</div><h3>Build your skills</h3><p class="muted">Learn about resumes, interviews, online safety, and preparing for the world of work.</p><button class="btn light" onclick="showPage('guides')">Read guides →</button></div>
-    </div>
-  </div>
-  <div class="green-section">
+  <div class="section">
     <div class="container">
-      <div class="section-heading"><span class="eyebrow">OUR PURPOSE</span><h2>Opportunity should be easier to explore.</h2><p>Path Lorax supports career awareness and responsible access to work-related information, especially for students preparing for their future.</p></div>
-      <div class="grid three">
-        <div class="stat"><strong>Discover</strong><span>Learn about careers</span></div>
-        <div class="stat"><strong>Prepare</strong><span>Develop useful skills</span></div>
-        <div class="stat"><strong>Explore</strong><span>Find trusted resources</span></div>
+      <div class="section-heading">
+        <h2>Start Exploring</h2>
+        <p>Use PathLorax to discover career interests and find helpful resources for your future.</p>
       </div>
-      <div class="actions"><button class="btn green" onclick="showPage('sdg')">Learn about SDG 8 →</button></div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3>Discover Your Interests</h3>
+          <p>Answer a short RIASEC survey to explore the kinds of activities and careers you may enjoy.</p>
+          <button class="btn btn-maroon" onclick="showPage('survey')">Take the Survey</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💼</div>
+          <h3>Explore Opportunities</h3>
+          <p>Search example career opportunities and find official employment websites for more information.</p>
+          <button class="btn btn-maroon" onclick="showPage('jobs')">Find Opportunities</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3>Prepare for Work</h3>
+          <p>Learn about resumes, interviews, useful skills, and training programs that can help you prepare.</p>
+          <button class="btn btn-maroon" onclick="showPage('guides')">View Job Guides</button>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Remember:</strong> Your first career choice does not have to determine your entire future.
+        Keep learning, exploring, and developing your skills.
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RIASEC -->
-<section class="page" id="riasec">
-  <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow">CAREER DISCOVERY</span>
-      <h2>What kind of work interests you?</h2>
-      <p class="muted">Answer each question based on what you genuinely enjoy. Your results are a starting point for exploration, not a final decision about your future.</p>
+<!-- RIASEC SURVEY -->
+<section id="survey" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Know yourself</div>
+      <h1>RIASEC Interest Survey</h1>
+      <p>Choose the activities you would enjoy. This short activity can help you explore your career interests.</p>
     </div>
-    <div class="notice">This is an informal educational activity inspired by the RIASEC career-interest model. It is not a clinical assessment or a professionally validated career test.</div>
-    <form id="riaForm" class="form-card">
-      <div id="questions"></div>
-      <button class="btn green" type="submit">Reveal My Results →</button>
-      <button class="btn light" type="button" onclick="resetRIA()">Start Again</button>
-    </form>
-    <div class="result-box" id="riaResult" aria-live="polite"></div>
-    <div class="grid three" style="margin-top:30px">
-      <div class="card"><span class="pill">R</span><h3>Realistic</h3><p class="muted">Hands-on tasks, building, fixing, nature, and practical work.</p></div>
-      <div class="card"><span class="pill">I</span><h3>Investigative</h3><p class="muted">Research, science, problem-solving, and understanding how things work.</p></div>
-      <div class="card"><span class="pill">A</span><h3>Artistic</h3><p class="muted">Design, creativity, writing, music, and original ideas.</p></div>
-      <div class="card"><span class="pill">S</span><h3>Social</h3><p class="muted">Teaching, helping, communicating, and supporting others.</p></div>
-      <div class="card"><span class="pill">E</span><h3>Enterprising</h3><p class="muted">Leadership, persuading, entrepreneurship, and organizing projects.</p></div>
-      <div class="card"><span class="pill">C</span><h3>Conventional</h3><p class="muted">Organizing information, records, details, and structured tasks.</p></div>
+  </div>
+
+  <div class="content-section container">
+    <div class="form-card">
+      <p><strong>Instructions:</strong> Select the activities you would enjoy doing. There are no right or wrong answers.</p>
+
+      <form id="riasecForm">
+        <div id="surveyQuestions"></div>
+        <button class="btn btn-maroon" type="submit">See My Results</button>
+        <button class="btn" type="reset" onclick="resetSurvey()">Reset Answers</button>
+      </form>
+
+      <div id="surveyResult" class="result-box" aria-live="polite"></div>
+      <p class="small-note">This is an educational self-reflection activity, not a professional psychological assessment.</p>
     </div>
   </div>
 </section>
 
 <!-- JOB SEARCHER -->
-<section class="page" id="jobs">
-  <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow">EXPLORE WORK</span>
-      <h2>Find a path that interests you.</h2>
-      <p class="muted">Search example job categories and discover official websites where you can investigate real opportunities.</p>
+<section id="jobs" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Explore possibilities</div>
+      <h1>Job Searcher</h1>
+      <p>Explore example career paths and use trusted employment websites to look for current opportunities.</p>
     </div>
-    <div class="card">
-      <div class="form-row">
-        <div><label for="jobSearch">Search by job or skill</label><input id="jobSearch" placeholder="e.g. design, writing, computer"></div>
-        <div><label for="jobType">Opportunity category</label><select id="jobType"><option value="all">All categories</option><option value="online">Online work</option><option value="local">Local / in-person work</option><option value="student">Student-friendly ideas</option></select></div>
-      </div>
-      <p class="muted">You can enter a city or municipality to help you plan a local search. This demo does not access your GPS or automatically verify nearby vacancies.</p>
-      <label for="location">City or municipality (optional)</label>
-      <input id="location" placeholder="e.g. Bogo City, Cebu">
-      <button class="btn" style="margin-top:15px" onclick="renderJobs()">Search examples →</button>
+  </div>
+
+  <div class="content-section container">
+    <div class="form-card">
+      <h2>Find Career Opportunities</h2>
+      <p>Enter your preferred location and the type of work you're interested in.</p>
+
+      <label for="jobLocation">Preferred location</label>
+      <input id="jobLocation" type="text" placeholder="e.g. Cebu City, Bogo City, or online">
+
+      <label for="jobCategory">Career category</label>
+      <select id="jobCategory">
+        <option value="all">All categories</option>
+        <option value="technology">Technology and ICT</option>
+        <option value="business">Business and Office Work</option>
+        <option value="creative">Creative Work and Design</option>
+        <option value="service">Customer Service and Hospitality</option>
+        <option value="education">Education and Training</option>
+        <option value="environment">Environment and Community</option>
+      </select>
+
+      <button class="btn btn-maroon" onclick="searchJobs()">Search Example Careers</button>
+      <p class="small-note">
+        The listings below are illustrative career examples, not verified current vacancies.
+        Always check the official employer or employment website for availability and requirements.
+      </p>
     </div>
-    <p class="notice" style="margin-top:20px">Important: The listings below are fictional examples for learning purposes. They are not verified vacancies, and no employer is claiming to hire through Path Lorax. Always verify a job directly with the official employer or platform.</p>
-    <div id="jobResults" class="grid three" style="margin-top:24px"></div>
-    <div class="card" style="margin-top:28px">
-      <h3>Official job-search resources in the Philippines</h3>
-      <p class="muted">Use these sites to research actual vacancies, employment services, and training. Availability and eligibility depend on the employer or program.</p>
-      <div class="actions">
-        <a class="btn green" href="https://philjobnet.gov.ph/" target="_blank" rel="noopener noreferrer">PhilJobNet ↗</a>
-        <a class="btn light" href="https://www.dole.gov.ph/" target="_blank" rel="noopener noreferrer">DOLE ↗</a>
-        <a class="btn light" href="https://www.tesda.gov.ph/" target="_blank" rel="noopener noreferrer">TESDA ↗</a>
-      </div>
+
+    <div id="jobResults" class="grid"></div>
+
+    <div class="callout">
+      <strong>Looking for real vacancies?</strong>
+      <p>Use the official employment websites in the Resources section. Some positions require applicants to meet age, education, and experience requirements.</p>
+      <button class="btn btn-maroon" onclick="showPage('resources')">Open Employment Resources</button>
     </div>
   </div>
 </section>
 
 <!-- JOB GUIDES -->
-<section class="page" id="guides">
-  <div class="container">
-    <div class="section-heading"><span class="eyebrow">PREPARE YOURSELF</span><h2>Your starter guide to work.</h2><p class="muted">Useful reminders for students who want to prepare for future employment, training, or responsible part-time opportunities.</p></div>
-    <div class="grid two">
-      <div class="card"><div class="card-icon">📄</div><h3>Make a simple resume</h3><p>Include your contact information, education, relevant school projects, skills, achievements, and volunteer experience. Be honest about your experience.</p><ul><li>Use clear headings.</li><li>Check spelling and grammar.</li><li>Tailor your resume to the opportunity.</li><li>Ask permission before sharing references' contact details.</li></ul></div>
-      <div class="card"><div class="card-icon">🎤</div><h3>Prepare for interviews</h3><p>Practice explaining your strengths, interests, and what you can contribute. You can use school projects or group activities as examples.</p><ul><li>Research the organization.</li><li>Practice answering common questions.</li><li>Be polite and honest.</li><li>Ask questions when something is unclear.</li></ul></div>
-      <div class="card"><div class="card-icon">🔐</div><h3>Stay safe online</h3><p>Be careful when searching for work online. Scammers may pretend to be employers or ask for money and personal information.</p><ul><li>Never pay someone just to get a job.</li><li>Verify the company and its official website.</li><li>Do not share passwords or verification codes.</li><li>Discuss suspicious offers with a trusted adult.</li></ul></div>
-      <div class="card"><div class="card-icon">🌱</div><h3>Build useful skills</h3><p>Schoolwork, personal projects, and volunteering can help you practice skills that may be useful in future careers.</p><ul><li>Practice communication and teamwork.</li><li>Learn digital tools relevant to your interests.</li><li>Keep examples of your projects.</li><li>Continue learning and asking for feedback.</li></ul></div>
+<section id="guides" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Prepare and improve</div>
+      <h1>Job Guides</h1>
+      <p>Learn the basics of preparing for job applications and developing your professional skills.</p>
     </div>
-    <div class="notice" style="margin-top:22px">If you are under 18, check local rules and age requirements before accepting paid work. Involve a trusted adult when evaluating unfamiliar employers or opportunities.</div>
+  </div>
+
+  <div class="section">
+    <div class="container grid">
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <h3>Creating a Resume</h3>
+        <p>A resume introduces your education, skills, experience, and accomplishments to an employer.</p>
+        <ul class="styled-list">
+          <li>Use a clear and readable format.</li>
+          <li>Include relevant education and skills.</li>
+          <li>Describe school projects and volunteer experience honestly.</li>
+          <li>Check spelling and contact details.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎤</div>
+        <h3>Preparing for Interviews</h3>
+        <p>Preparation can help you communicate your abilities and interests confidently.</p>
+        <ul class="styled-list">
+          <li>Research the employer and role.</li>
+          <li>Practice common interview questions.</li>
+          <li>Give honest examples of your skills.</li>
+          <li>Ask relevant questions about the job.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>Digital Skills</h3>
+        <p>Digital skills can help you study, communicate, organize information, and complete work tasks.</p>
+        <ul class="styled-list">
+          <li>Practice word processing and spreadsheets.</li>
+          <li>Learn safe online communication.</li>
+          <li>Build projects to demonstrate your abilities.</li>
+          <li>Keep learning new tools and technologies.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Workplace Skills</h3>
+        <p>Employers often value how people communicate, cooperate, and handle responsibilities.</p>
+        <ul class="styled-list">
+          <li>Communicate clearly and respectfully.</li>
+          <li>Practice teamwork and problem-solving.</li>
+          <li>Manage time and meet deadlines.</li>
+          <li>Accept feedback and learn from mistakes.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Training and Education</h3>
+        <p>Training can help you develop the knowledge and practical skills needed for different careers.</p>
+        <ul class="styled-list">
+          <li>Explore courses related to your interests.</li>
+          <li>Check course eligibility and requirements.</li>
+          <li>Compare costs and available assistance.</li>
+          <li>Verify providers through official sources.</li>
+        </ul>
+        <button class="btn btn-maroon" onclick="showPage('resources')">Find Training Resources</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Online Job Safety</h3>
+        <p>Protect yourself when searching and applying for jobs online.</p>
+        <ul class="styled-list">
+          <li>Verify employers and job advertisements.</li>
+          <li>Be cautious of requests for upfront payments.</li>
+          <li>Never share passwords or verification codes.</li>
+          <li>Protect personal information and documents.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="page" id="about">
-  <div class="container">
-    <div class="section-heading"><span class="eyebrow">ABOUT PATH LORAX</span><h2>A starting point for your future.</h2><p class="muted">Path Lorax is a student-friendly educational project designed to make career exploration easier to understand and more approachable.</p></div>
-    <div class="grid two">
-      <div class="card"><div class="card-icon">🎯</div><h3>Our mission</h3><p>Our mission is to help students learn about their interests, explore career options, and find useful information about skills and employment resources.</p></div>
-      <div class="card"><div class="card-icon">🌿</div><h3>Our vision</h3><p>We envision a future where young people feel more confident exploring different career paths and preparing for meaningful, safe, and decent work.</p></div>
-      <div class="card"><div class="card-icon">🧭</div><h3>What we offer</h3><p>Path Lorax includes an informal RIASEC activity, educational job examples, beginner-friendly career guides, and links to external resources.</p></div>
-      <div class="card"><div class="card-icon">🤝</div><h3>Our commitment</h3><p>We aim to encourage responsible career exploration, respect for different interests, awareness of job scams, and access to trusted information.</p></div>
+<!-- ABOUT US -->
+<section id="about" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Meet the project team</div>
+      <h1>About <span>Us</span></h1>
+      <p>Learn about the people behind PathLorax and the purpose of our project.</p>
     </div>
-    <p class="muted" style="margin-top:24px">Path Lorax is an educational project, not a recruitment agency. It does not guarantee employment or claim to be affiliated with the external services linked on this site.</p>
+  </div>
+
+  <div class="content-section container">
+    <div class="sdg-banner">
+      <div class="eyebrow">Our project</div>
+      <h2>PathLorax</h2>
+      <p>
+        PathLorax is a career exploration and job-resource website designed to help
+        users learn about career interests, discover employment resources, and prepare
+        for future opportunities.
+      </p>
+    </div>
+
+    <div class="section-heading">
+      <h2>Our Project Information</h2>
+      <p>The following details identify our project's assigned members and responsibilities.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="role">SDG</div>
+        <h3>@Zaijian Braile Frasco</h3>
+        <p>Responsible for the SDG component of the project.</p>
+      </div>
+
+      <div class="team-card">
+        <div class="role">Rationale</div>
+        <h3>Ako</h3>
+        <p>Responsible for presenting the rationale behind the project.</p>
+      </div>
+
+      <div class="team-card">
+        <div class="role">Project Description</div>
+        <h3>@Uriel Fenecios</h3>
+        <p>Responsible for describing the project and its intended purpose.</p>
+      </div>
+
+      <div class="team-card">
+        <div class="role">Target Benefactors</div>
+        <h3>@Ralph August and @Ike Reynes</h3>
+        <p>Responsible for identifying the people who may benefit from the project.</p>
+      </div>
+
+      <div class="team-card">
+        <div class="role">Target Problem</div>
+        <h3>@Iñego Jon R. Bongcales</h3>
+        <p>Responsible for identifying the problem that the project aims to address.</p>
+      </div>
+
+      <div class="team-card">
+        <div class="role">Target Goal</div>
+        <h3>@Kresha Cassandra</h3>
+        <p>Responsible for presenting the goal that the project aims to achieve.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Our purpose:</strong>
+      To make career exploration and employment information easier to access,
+      especially for students and people preparing for the world of work.
+    </div>
   </div>
 </section>
 
 <!-- SDG 8 -->
-<section class="page" id="sdg">
-  <div class="container">
-    <div class="section-heading"><span class="eyebrow">UNITED NATIONS SUSTAINABLE DEVELOPMENT GOALS</span><h2>SDG 8: Decent Work and Economic Growth</h2><p class="muted">SDG 8 promotes sustained, inclusive, and sustainable economic growth, productive employment, and decent work for all.</p></div>
-    <div class="card" style="background:#fff8e8;border-color:#f3dfb1">
-      <div class="card-icon">🌍</div>
-      <h3>Why does decent work matter?</h3>
-      <p>Decent work means more than simply having a job. It includes fair opportunities, safe working conditions, respect for workers' rights, and the chance to earn a livelihood. Access to education, skills development, and reliable employment information can help people prepare for the world of work.</p>
-      <a class="btn green" href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noopener noreferrer">Official UN SDG 8 page ↗</a>
+<section id="sdg" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Sustainable Development Goals</div>
+      <h1>SDG 8: Decent Work and Economic Growth</h1>
+      <p>Promoting productive employment, decent work, and inclusive economic opportunities.</p>
     </div>
-    <div class="grid three" style="margin-top:22px">
-      <div class="card"><div class="card-icon">📚</div><h3>Skills and education</h3><p class="muted">Learning and training can help people prepare for different careers and changing workplace needs.</p></div>
-      <div class="card"><div class="card-icon">⚖️</div><h3>Fair opportunities</h3><p class="muted">Employment should respect workers' rights and promote safe, fair, and inclusive working conditions.</p></div>
-      <div class="card"><div class="card-icon">💡</div><h3>Innovation and growth</h3><p class="muted">Creativity, entrepreneurship, and responsible innovation can contribute to economic opportunities.</p></div>
+  </div>
+
+  <div class="content-section container">
+    <div class="sdg-banner">
+      <h2>Decent Work and Economic Growth</h2>
+      <p>
+        Sustainable Development Goal 8 promotes sustained, inclusive, and sustainable
+        economic growth, productive employment, and decent work for all.
+      </p>
     </div>
-    <div class="green-section card" style="margin-top:22px">
-      <h3>How Path Lorax connects to SDG 8</h3>
-      <p>Path Lorax supports career awareness by helping students explore their interests, learn about workplace preparation, and locate external employment and training resources. It is a small educational contribution to the broader goal of preparing people for decent work.</p>
+
+    <h2>How PathLorax Supports SDG 8</h2>
+    <p>
+      PathLorax supports the goal by helping users explore career interests, learn about
+      job opportunities, and access resources for developing work-related skills.
+      Providing reliable employment links can help users make more informed decisions
+      about their future.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <h3>Career Awareness</h3>
+        <p>Help users explore different occupations and identify interests that may guide their career decisions.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Skills Development</h3>
+        <p>Encourage users to build practical, digital, communication, and professional skills.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Access to Resources</h3>
+        <p>Connect users with employment and training websites where they can check opportunities and requirements.</p>
+      </div>
     </div>
+
+    <div class="callout">
+      <strong>Important:</strong> PathLorax is an informational project. It does not guarantee employment,
+      provide jobs directly, or replace official employment and training services.
+    </div>
+
+    <p class="small-note">
+      Learn more about the global goal at the
+      <a href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noopener noreferrer"><strong>United Nations SDG 8 website ↗</strong></a>.
+    </p>
   </div>
 </section>
 
 <!-- RESOURCES -->
-<section class="page" id="resources">
-  <div class="container">
-    <div class="section-heading"><span class="eyebrow">KEEP LEARNING</span><h2>Useful career and learning resources.</h2><p class="muted">These external websites can help you continue exploring careers, skills, education, and employment information.</p></div>
-    <div class="grid two">
-      <div class="card"><span class="pill">PHILIPPINES</span><h3>PhilJobNet</h3><p class="muted">Explore the Philippine government's job-matching and employment information service.</p><a class="btn light" href="https://philjobnet.gov.ph/" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
-      <div class="card"><span class="pill">GOVERNMENT</span><h3>Department of Labor and Employment</h3><p class="muted">Find labor-related information, announcements, and services in the Philippines.</p><a class="btn light" href="https://www.dole.gov.ph/" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
-      <div class="card"><span class="pill">TRAINING</span><h3>TESDA</h3><p class="muted">Explore technical-vocational education, training, and skills-related information.</p><a class="btn light" href="https://www.tesda.gov.ph/" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
-      <div class="card"><span class="pill">CAREER EXPLORATION</span><h3>Open Psychometrics</h3><p class="muted">Explore an external RIASEC-related interest activity. It is separate from Path Lorax and has its own privacy and usage terms.</p><a class="btn light" href="https://openpsychometrics.org/" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
-      <div class="card"><span class="pill">ONLINE LEARNING</span><h3>Coursera</h3><p class="muted">Browse online courses and skill-development opportunities. Course access and prices vary.</p><a class="btn light" href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
-      <div class="card"><span class="pill">GLOBAL GOALS</span><h3>United Nations SDGs</h3><p class="muted">Learn more about the Sustainable Development Goals and the global effort to promote decent work.</p><a class="btn light" href="https://sdgs.un.org/goals" target="_blank" rel="noopener noreferrer">Visit website ↗</a></div>
+<section id="resources" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Trusted links</div>
+      <h1>Employment and Training Resources</h1>
+      <p>Visit these external websites to explore job listings, career information, and skills training.</p>
     </div>
-    <p class="muted" style="margin-top:22px">External sites are independently operated. Review their policies, eligibility requirements, and terms before creating accounts or sharing information.</p>
+  </div>
+
+  <div class="section">
+    <div class="container grid">
+      <div class="card">
+        <div class="card-icon">🇵🇭</div>
+        <h3>PhilJobNet</h3>
+        <p>The Philippine government's job-matching and employment facilitation portal.</p>
+        <a class="btn btn-maroon" href="https://philjobnet.gov.ph/" target="_blank" rel="noopener noreferrer">Visit PhilJobNet ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>Department of Labor and Employment</h3>
+        <p>Explore official labor information, programs, and employment-related services in the Philippines.</p>
+        <a class="btn btn-maroon" href="https://www.dole.gov.ph/" target="_blank" rel="noopener noreferrer">Visit DOLE ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>TESDA</h3>
+        <p>Learn about technical-vocational education, training programs, and skills development.</p>
+        <a class="btn btn-maroon" href="https://www.tesda.gov.ph/" target="_blank" rel="noopener noreferrer">Visit TESDA ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌏</div>
+        <h3>JobStreet Philippines</h3>
+        <p>Explore private-sector job advertisements and career opportunities.</p>
+        <a class="btn btn-maroon" href="https://www.jobstreet.com.ph/" target="_blank" rel="noopener noreferrer">Visit JobStreet ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>Online Freelance Work</h3>
+        <p>Explore freelance opportunities and review each platform's eligibility and account requirements.</p>
+        <a class="btn btn-maroon" href="https://www.upwork.com/" target="_blank" rel="noopener noreferrer">Visit Upwork ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <h3>United Nations SDG 8</h3>
+        <p>Read about decent work, economic growth, and the global development targets.</p>
+        <a class="btn btn-maroon" href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noopener noreferrer">Explore SDG 8 ↗</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="callout">
+        <strong>Safety reminder:</strong> Check the legitimacy of job advertisements, eligibility requirements,
+        and employer details before applying. Never pay suspicious recruitment fees or share passwords.
+        Some platforms and jobs have minimum-age requirements.
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="page" id="contact">
-  <div class="container">
-    <div class="section-heading"><span class="eyebrow">GET IN TOUCH</span><h2>Send us a message.</h2><p class="muted">Have feedback, a suggestion, or an idea to improve Path Lorax? Draft a message below.</p></div>
-    <div class="card form-card">
+<section id="contact" class="page">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="eyebrow">Get in touch</div>
+      <h1>Contact Us</h1>
+      <p>Have a question or suggestion about PathLorax? Use this sample contact form to prepare a message.</p>
+    </div>
+  </div>
+
+  <div class="content-section container">
+    <div class="form-card">
+      <h2>Send a Message</h2>
+      <p>This demonstration form does not send messages to a server. It prepares a message for you to copy.</p>
+
       <form id="contactForm">
-        <div class="form-row">
-          <div><label for="contactName">Your name</label><input id="contactName" required maxlength="100" placeholder="Enter your name"></div>
-          <div><label for="contactEmail">Your email (optional)</label><input id="contactEmail" type="email" maxlength="150" placeholder="you@example.com"></div>
-        </div>
-        <label for="contactSubject">Subject</label><input id="contactSubject" required maxlength="150" placeholder="What is your message about?">
-        <label for="contactMessage">Message</label><textarea id="contactMessage" required maxlength="3000" placeholder="Write your message here..."></textarea>
-        <div class="actions"><button class="btn green" type="submit">Download Message Draft</button><button class="btn light" type="reset">Clear</button></div>
+        <label for="contactName">Your name</label>
+        <input id="contactName" type="text" placeholder="Enter your name" required>
+
+        <label for="contactEmail">Your email (optional)</label>
+        <input id="contactEmail" type="email" placeholder="you@example.com">
+
+        <label for="contactSubject">Subject</label>
+        <input id="contactSubject" type="text" placeholder="What is your message about?" required>
+
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" rows="5" placeholder="Write your message here..." required></textarea>
+
+        <button type="submit" class="btn btn-maroon">Prepare Message</button>
       </form>
-      <p class="muted">This demo downloads your message as a text file. It does not send an email or save your message to a server.</p>
-      <div id="contactStatus" aria-live="polite"></div>
+
+      <div id="contactResult" class="result-box" aria-live="polite">
+        <h3>Your prepared message</h3>
+        <pre id="contactPreview" style="white-space:pre-wrap;overflow-wrap:anywhere;font-family:Arial,sans-serif;"></pre>
+        <button class="btn btn-maroon" onclick="copyContactMessage()">Copy Message</button>
+        <p class="small-note" id="copyStatus"></p>
+      </div>
     </div>
   </div>
 </section>
+
 </main>
 
 <footer>
   <div class="footer-inner">
-    <div><div class="logo" style="color:white" onclick="showPage('home')">Path <span style="color:#9be19a">Lorax</span></div><p>Explore your interests. Prepare for your future.</p></div>
-    <div><strong>Explore</strong><p><a href="#home" onclick="showPage('home');return false">Home</a></p><p><a href="#riasec" onclick="showPage('riasec');return false">RIASEC Survey</a></p><p><a href="#jobs" onclick="showPage('jobs');return false">Job Searcher</a></p></div>
-    <div><strong>Learn more</strong><p><a href="#guides" onclick="showPage('guides');return false">Job Guides</a></p><p><a href="#sdg" onclick="showPage('sdg');return false">SDG 8</a></p><p><a href="#resources" onclick="showPage('resources');return false">Resources</a></p></div>
-  </div>
-  <div style="max-width:1120px;margin:25px auto 0;border-top:1px solid #ffffff30;padding-top:16px">
-    <p>© <span id="year"></span> Path Lorax. Educational project for career exploration.</p>
-    <p style="font-size:.82rem;color:#c6ddeb">Demo listings are fictional. External links belong to their respective owners.</p>
+    <div>
+      <a class="logo" href="#" onclick="showPage('home'); return false;">Path<span>Lorax</span></a>
+      <p>Explore your interests. Prepare for your future.</p>
+    </div>
+    <div>
+      <p>Created as an educational career exploration project.</p>
+      <p>Supporting awareness of SDG 8: Decent Work and Economic Growth.</p>
+      <p>© <span id="year"></span> PathLorax</p>
+    </div>
   </div>
 </footer>
 
 <script>
-const pages = ["home","riasec","jobs","guides","about","sdg","resources","contact"];
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  const buttons = document.querySelectorAll('nav button');
 
-function showPage(id) {
-  if (!pages.includes(id)) id = "home";
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  const page = document.getElementById(id);
-  page.classList.add("active");
-  document.querySelectorAll(".navlinks button").forEach(b => {
-    b.classList.toggle("active", b.dataset.page === id);
-  });
-  document.getElementById("navlinks").classList.remove("open");
-  history.replaceState(null, "", "#" + id);
-  window.scrollTo({top:0, behavior:"smooth"});
-  if (id === "jobs") renderJobs();
-}
+  pages.forEach(page => page.classList.remove('active'));
 
-function toggleMenu() {
-  document.getElementById("navlinks").classList.toggle("open");
-}
-
-const riasecQuestions = [
-  ["I enjoy building, fixing, or assembling things.", "R"],
-  ["I like investigating how technology or machines work.", "I"],
-  ["I enjoy creating designs, videos, stories, or artwork.", "A"],
-  ["I like helping people learn or solve their problems.", "S"],
-  ["I enjoy leading a team or presenting ideas.", "E"],
-  ["I like organizing files, schedules, and information.", "C"],
-  ["I would enjoy practical work involving tools or equipment.", "R"],
-  ["I like researching questions and looking for evidence.", "I"],
-  ["I prefer tasks that allow me to express original ideas.", "A"],
-  ["I enjoy working with people and listening to their concerns.", "S"],
-  ["I like planning projects and convincing people to support an idea.", "E"],
-  ["I enjoy working with details, records, or spreadsheets.", "C"],
-  ["I would like to work outdoors or create something practical.", "R"],
-  ["I enjoy solving complicated problems using logic.", "I"],
-  ["I like improving the appearance or presentation of things.", "A"],
-  ["I would enjoy teaching, guiding, or supporting others.", "S"],
-  ["I like taking initiative and coordinating activities.", "E"],
-  ["I prefer clear procedures and carefully arranged information.", "C"]
-];
-
-const riasecInfo = {
-  R: {name:"Realistic", desc:"You may enjoy practical, hands-on activities and working with tools, equipment, or the physical world.", careers:"Technician, skilled trades trainee, agricultural worker, equipment specialist"},
-  I: {name:"Investigative", desc:"You may enjoy research, analysis, science, technology, and solving problems.", careers:"Research assistant, IT support specialist, data analyst, laboratory technician"},
-  A: {name:"Artistic", desc:"You may enjoy creative expression, design, storytelling, and making original work.", careers:"Graphic designer, video editor, illustrator, content creator"},
-  S: {name:"Social", desc:"You may enjoy helping, teaching, communicating, and supporting people.", careers:"Teacher, community worker, tutor, customer support specialist"},
-  E: {name:"Enterprising", desc:"You may enjoy leadership, organizing projects, entrepreneurship, and presenting ideas.", careers:"Entrepreneur, sales representative, project coordinator, marketing assistant"},
-  C: {name:"Conventional", desc:"You may enjoy organizing information, following structured processes, and handling details.", careers:"Administrative assistant, records clerk, bookkeeping assistant, data encoder"}
-};
-
-const questionsElement = document.getElementById("questions");
-questionsElement.innerHTML = riasecQuestions.map((q,i) => `
-  <div class="question">
-    <p>${i+1}. ${q[0]}</p>
-    <label class="option"><input type="radio" name="q${i}" value="2" required> Yes, this sounds like me.</label>
-    <label class="option"><input type="radio" name="q${i}" value="1"> Sometimes / not sure.</label>
-    <label class="option"><input type="radio" name="q${i}" value="0"> No, not really.</label>
-  </div>
-`).join("");
-
-document.getElementById("riaForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const scores = {R:0,I:0,A:0,S:0,E:0,C:0};
-
-  for (let i=0;i<riasecQuestions.length;i++) {
-    const selected = document.querySelector(`input[name="q${i}"]:checked`);
-    if (!selected) {
-      alert("Please answer every question before viewing your results.");
-      return;
-    }
-    scores[riasecQuestions[i][1]] += Number(selected.value);
+  const target = document.getElementById(pageId);
+  if (target) {
+    target.classList.add('active');
   }
 
-  const ranked = Object.keys(scores).sort((a,b) => scores[b]-scores[a]);
-  const top = ranked.slice(0,3);
-  const result = document.getElementById("riaResult");
-
-  result.innerHTML = `
-    <span class="eyebrow">YOUR EXPLORATION RESULTS</span>
-    <h2>Your leading interests</h2>
-    <p>Based on your answers, these three categories received your highest scores. They are clues for further exploration, not fixed labels.</p>
-    ${top.map((key,i) => `
-      <div class="card" style="margin:12px 0;box-shadow:none">
-        <span class="pill">#${i+1} · ${scores[key]} points</span>
-        <h3>${riasecInfo[key].name}</h3>
-        <p>${riasecInfo[key].desc}</p>
-        <p><strong>Career examples:</strong> ${riasecInfo[key].careers}</p>
-      </div>
-    `).join("")}
-    <p><strong>Remember:</strong> Your interests can change and overlap. Explore more than one career and consider your skills, values, education, and opportunities.</p>
-    <button class="btn green" onclick="showPage('jobs')">Explore job examples →</button>
-  `;
-
-  result.classList.add("show");
-  result.scrollIntoView({behavior:"smooth",block:"start"});
-});
-
-function resetRIA() {
-  document.getElementById("riaForm").reset();
-  document.getElementById("riaResult").classList.remove("show");
-  document.getElementById("riaForm").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-const jobs = [
-  {title:"Graphic Design Assistant",type:"online",tag:"Creative",desc:"Learn about layouts, visual design, and creating digital materials.",skills:"Design, creativity, communication"},
-  {title:"Video Editing Assistant",type:"online",tag:"Digital",desc:"Explore how clips, captions, sound, and timing come together in a video.",skills:"Editing, storytelling, attention to detail"},
-  {title:"Writing and Content Assistant",type:"online",tag:"Writing",desc:"Learn about drafting, proofreading, and organizing written content.",skills:"Writing, research, grammar"},
-  {title:"Website Development Trainee",type:"online",tag:"Technology",desc:"Explore website structure, basic HTML, CSS, and problem-solving.",skills:"HTML, CSS, logic"},
-  {title:"Online Tutoring Assistant",type:"online",tag:"Education",desc:"Explore explaining lessons and helping learners understand concepts.",skills:"Communication, patience, subject knowledge"},
-  {title:"Small Business Assistant",type:"local",tag:"Business",desc:"Learn about customer service, stock organization, and everyday business tasks.",skills:"Organization, teamwork, reliability"},
-  {title:"Community Project Volunteer",type:"local",tag:"Community",desc:"Explore helping with community activities and local initiatives.",skills:"Teamwork, planning, communication"},
-  {title:"Library or Records Assistant",type:"local",tag:"Organization",desc:"Learn how to arrange materials, maintain records, and organize information.",skills:"Accuracy, organization, responsibility"},
-  {title:"School Event Design Helper",type:"student",tag:"Student idea",desc:"Create posters or digital materials for approved school activities.",skills:"Creativity, teamwork, design"},
-  {title:"Student Tech Project",type:"student",tag:"Student idea",desc:"Build a small website, digital portfolio, or useful technology project.",skills:"Problem-solving, digital skills"},
-  {title:"School Club Support",type:"student",tag:"Student idea",desc:"Practice teamwork, organizing activities, and communicating with others.",skills:"Leadership, cooperation, planning"},
-  {title:"Digital Portfolio Creator",type:"student",tag:"Student idea",desc:"Collect school projects and demonstrate your developing skills.",skills:"Presentation, reflection, digital literacy"}
-];
-
-function renderJobs() {
-  const query = (document.getElementById("jobSearch").value || "").toLowerCase().trim();
-  const type = document.getElementById("jobType").value;
-  const location = document.getElementById("location").value.trim();
-
-  const filtered = jobs.filter(job => {
-    const matchesType = type === "all" || job.type === type;
-    const text = (job.title+" "+job.tag+" "+job.desc+" "+job.skills).toLowerCase();
-    return matchesType && (!query || text.includes(query));
+  buttons.forEach(button => {
+    button.classList.toggle('active', button.dataset.page === pageId);
   });
 
-  const result = document.getElementById("jobResults");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-  if (!filtered.length) {
-    result.innerHTML = `<div class="empty" style="grid-column:1/-1"><h3>No matching examples found</h3><p>Try a different search word or choose another category.</p></div>`;
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* RIASEC SURVEY */
+
+const riasecQuestions = [
+  {
+    question: "I enjoy repairing, assembling, or building physical objects.",
+    type: "R"
+  },
+  {
+    question: "I enjoy investigating problems and finding evidence-based answers.",
+    type: "I"
+  },
+  {
+    question: "I enjoy creating original designs, artwork, stories, or videos.",
+    type: "A"
+  },
+  {
+    question: "I enjoy teaching, helping, or guiding other people.",
+    type: "S"
+  },
+  {
+    question: "I enjoy persuading people, leading a project, or presenting ideas.",
+    type: "E"
+  },
+  {
+    question: "I enjoy organizing records, schedules, and detailed information.",
+    type: "C"
+  },
+  {
+    question: "I enjoy working with tools, machines, or practical equipment.",
+    type: "R"
+  },
+  {
+    question: "I enjoy analyzing data and understanding how things work.",
+    type: "I"
+  },
+  {
+    question: "I enjoy experimenting with different ways to express an idea.",
+    type: "A"
+  },
+  {
+    question: "I enjoy cooperating with people to solve their concerns.",
+    type: "S"
+  },
+  {
+    question: "I enjoy organizing a group to reach a goal.",
+    type: "E"
+  },
+  {
+    question: "I enjoy following a system and checking information for accuracy.",
+    type: "C"
+  }
+];
+
+const riasecTypes = {
+  R: {
+    name: "Realistic",
+    description: "You may enjoy practical activities, equipment, hands-on tasks, and solving physical problems.",
+    careers: "Technician, skilled trades, agriculture, engineering support, or equipment operations."
+  },
+  I: {
+    name: "Investigative",
+    description: "You may enjoy research, analysis, scientific questions, and understanding complex problems.",
+    careers: "Research assistant, laboratory work, data analysis, science, or IT analysis."
+  },
+  A: {
+    name: "Artistic",
+    description: "You may enjoy creative expression, design, original ideas, and flexible ways of working.",
+    careers: "Graphic design, illustration, writing, media production, or creative technology."
+  },
+  S: {
+    name: "Social",
+    description: "You may enjoy helping, teaching, supporting, and cooperating with other people.",
+    careers: "Teaching support, community services, customer assistance, or training."
+  },
+  E: {
+    name: "Enterprising",
+    description: "You may enjoy leadership, persuasion, organizing projects, and taking initiative.",
+    careers: "Business, sales, entrepreneurship, project coordination, or marketing."
+  },
+  C: {
+    name: "Conventional",
+    description: "You may enjoy organizing information, working with details, and following clear systems.",
+    careers: "Administrative support, bookkeeping, records management, or data entry."
+  }
+};
+
+function buildSurvey() {
+  const container = document.getElementById('surveyQuestions');
+
+  container.innerHTML = riasecQuestions.map((item, index) => `
+    <fieldset>
+      <legend>${index + 1}. ${item.question}</legend>
+      <label class="option">
+        <input type="radio" name="q${index}" value="${item.type}" required>
+        Yes, I would enjoy this
+      </label>
+      <label class="option">
+        <input type="radio" name="q${index}" value="N">
+        Not sure
+      </label>
+      <label class="option">
+        <input type="radio" name="q${index}" value="X">
+        No, I would not enjoy this
+      </label>
+    </fieldset>
+  `).join('');
+}
+
+buildSurvey();
+
+document.getElementById('riasecForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(this);
+  const scores = {R:0, I:0, A:0, S:0, E:0, C:0};
+
+  riasecQuestions.forEach((question, index) => {
+    const answer = formData.get('q' + index);
+    if (answer === question.type) {
+      scores[question.type]++;
+    }
+  });
+
+  const ranked = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  const highest = ranked[0][1];
+  const topTypes = ranked.filter(item => item[1] === highest && highest > 0);
+
+  const result = document.getElementById('surveyResult');
+  result.style.display = 'block';
+
+  if (highest === 0) {
+    result.innerHTML = `
+      <h3>Your Results</h3>
+      <p>You did not select "Yes" for any activity. Consider reviewing your answers and choosing activities that genuinely interest you.</p>
+    `;
+    result.scrollIntoView({behavior:'smooth', block:'center'});
     return;
   }
 
-  result.innerHTML = filtered.map(job => `
-    <article class="card job-card">
-      <span class="pill">${job.tag}</span>
-      <h3>${job.title}</h3>
-      <p class="muted">${job.desc}</p>
-      <p><strong>Skills to explore:</strong><br>${job.skills}</p>
-      <p class="muted" style="font-size:.84rem">${job.type==="online"?"Online-work example":job.type==="local"?"In-person work example":"Student project idea"}${location && job.type==="local"?" · Search area: "+escapeHTML(location):""}</p>
-      <span class="notice">Example only — not a verified vacancy.</span>
-      <button class="btn light" onclick="showPage('guides')">Prepare your skills →</button>
-    </article>
-  `).join("");
+  result.innerHTML = `
+    <h3>Your Interest Results</h3>
+    <p>Your strongest interest area${topTypes.length > 1 ? 's are' : ' is'}:
+      <strong>${topTypes.map(item => riasecTypes[item[0]].name).join(', ')}</strong>.
+    </p>
+    ${topTypes.map(item => `
+      <div style="margin-top:16px">
+        <strong>${riasecTypes[item[0]].name} — ${item[1]} point(s)</strong>
+        <p>${riasecTypes[item[0]].description}</p>
+        <p><strong>Career ideas:</strong> ${riasecTypes[item[0]].careers}</p>
+      </div>
+    `).join('')}
+    <h3 style="margin-top:20px">Your scores</h3>
+    ${ranked.map(([type, score]) => `
+      <p><strong>${riasecTypes[type].name}:</strong> ${score} of ${
+        riasecQuestions.filter(q => q.type === type).length
+      }</p>
+    `).join('')}
+    <p class="small-note">This result is only a starting point for exploration. Your interests, skills, values, and opportunities can change over time.</p>
+  `;
+
+  result.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+function resetSurvey() {
+  setTimeout(() => {
+    const result = document.getElementById('surveyResult');
+    result.style.display = 'none';
+    result.innerHTML = '';
+  }, 0);
+}
+
+/* JOB SEARCHER */
+
+const exampleJobs = [
+  {
+    title: "Junior IT Support",
+    category: "technology",
+    location: "Local or office-based",
+    description: "Help users troubleshoot common computer, software, and device problems.",
+    skills: "Basic computer knowledge, communication, problem-solving",
+    link: "https://philjobnet.gov.ph/"
+  },
+  {
+    title: "Web Design Assistant",
+    category: "technology",
+    location: "Office-based or remote, depending on employer",
+    description: "Assist with website layouts, content updates, and basic web design tasks.",
+    skills: "HTML, CSS, design awareness, attention to detail",
+    link: "https://www.jobstreet.com.ph/"
+  },
+  {
+    title: "Data Entry Assistant",
+    category: "business",
+    location: "Office-based or remote, depending on employer",
+    description: "Enter, organize, and check information in digital records.",
+    skills: "Typing, accuracy, spreadsheets, organization",
+    link: "https://philjobnet.gov.ph/"
+  },
+  {
+    title: "Administrative Assistant",
+    category: "business",
+    location: "Usually office-based",
+    description: "Support schedules, documents, records, and everyday office tasks.",
+    skills: "Organization, communication, word processing",
+    link: "https://www.jobstreet.com.ph/"
+  },
+  {
+    title: "Graphic Design Assistant",
+    category: "creative",
+    location: "Office-based or remote, depending on employer",
+    description: "Help create visual materials for presentations, publications, or online content.",
+    skills: "Visual design, creativity, design software",
+    link: "https://www.jobstreet.com.ph/"
+  },
+  {
+    title: "Video Editing Assistant",
+    category: "creative",
+    location: "Office-based or remote, depending on employer",
+    description: "Assist in organizing footage, editing videos, and preparing digital content.",
+    skills: "Video editing, file organization, creativity",
+    link: "https://www.upwork.com/"
+  },
+  {
+    title: "Customer Service Representative",
+    category: "service",
+    location: "Usually office-based; some employers offer remote work",
+    description: "Respond to customer questions and help resolve service concerns.",
+    skills: "Communication, patience, problem-solving",
+    link: "https://www.jobstreet.com.ph/"
+  },
+  {
+    title: "Hospitality Assistant",
+    category: "service",
+    location: "Hotels, restaurants, and tourism businesses",
+    description: "Support guests and assist with daily hospitality operations.",
+    skills: "Teamwork, customer service, organization",
+    link: "https://philjobnet.gov.ph/"
+  },
+  {
+    title: "Learning Support Assistant",
+    category: "education",
+    location: "Schools or learning centers",
+    description: "Assist with learning materials, educational activities, and classroom organization.",
+    skills: "Communication, patience, organization",
+    link: "https://www.tesda.gov.ph/"
+  },
+  {
+    title: "Community Project Assistant",
+    category: "environment",
+    location: "Community organizations and project sites",
+    description: "Help organize community activities, awareness programs, and project records.",
+    skills: "Teamwork, organization, communication",
+    link: "https://www.dole.gov.ph/"
+  }
+];
+
+function searchJobs() {
+  const locationInput = document.getElementById('jobLocation').value.trim();
+  const category = document.getElementById('jobCategory').value;
+  const results = document.getElementById('jobResults');
+
+  const filtered = exampleJobs.filter(job =>
+    category === 'all' || job.category === category
+  );
+
+  const locationText = locationInput
+    ? `Your preferred location: ${escapeHTML(locationInput)}`
+    : 'No preferred location entered. Check each employer for the actual work location.';
+
+  results.innerHTML = `
+    <div style="grid-column:1/-1" class="callout">
+      <strong>Search summary</strong>
+      <p>${locationText}</p>
+      <p>These are example careers, not live job listings. The location field does not automatically verify vacancies near you.</p>
+    </div>
+    ${filtered.map(job => `
+      <div class="card job-card">
+        <div class="card-icon">💼</div>
+        <h3>${escapeHTML(job.title)}</h3>
+        <span class="tag">${escapeHTML(job.category)}</span>
+        <p><strong>Possible location:</strong> ${escapeHTML(job.location)}</p>
+        <p>${escapeHTML(job.description)}</p>
+        <p><strong>Useful skills:</strong> ${escapeHTML(job.skills)}</p>
+        <a class="btn btn-maroon" href="${job.link}" target="_blank" rel="noopener noreferrer">Check Employment Site ↗</a>
+      </div>
+    `).join('')}
+  `;
+
+  if (!filtered.length) {
+    results.innerHTML = '<div class="empty-state">No example careers found for that category.</div>';
+  }
+
+  results.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[char]));
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#039;'
+  })[char]);
 }
 
-document.getElementById("jobSearch").addEventListener("input", renderJobs);
-document.getElementById("jobType").addEventListener("change", renderJobs);
+searchJobs();
 
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+/* CONTACT FORM */
 
-  const name = document.getElementById("contactName").value.trim();
-  const email = document.getElementById("contactEmail").value.trim();
-  const subject = document.getElementById("contactSubject").value.trim();
-  const message = document.getElementById("contactMessage").value.trim();
+let preparedContactMessage = '';
 
-  const content = `Path Lorax Contact Message Draft\n\nName: ${name}\nEmail: ${email || "Not provided"}\nSubject: ${subject}\n\nMessage:\n${message}\n`;
-  const blob = new Blob([content], {type:"text/plain;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-  link.href = url;
-  link.download = "path-lorax-message.txt";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
 
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.getElementById("contactStatus").innerHTML = "<p class='notice'>Your message draft was downloaded. It has not been sent.</p>";
+  preparedContactMessage =
+    'PathLorax Contact Message\n' +
+    'Name: ' + name + '\n' +
+    'Email: ' + (email || 'Not provided') + '\n' +
+    'Subject: ' + subject + '\n\n' +
+    message;
+
+  document.getElementById('contactPreview').textContent = preparedContactMessage;
+  document.getElementById('contactResult').style.display = 'block';
+  document.getElementById('copyStatus').textContent =
+    'Your message has been prepared. Copy it to send it through your preferred messaging or email service.';
+  document.getElementById('contactResult').scrollIntoView({behavior:'smooth', block:'center'});
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+async function copyContactMessage() {
+  const status = document.getElementById('copyStatus');
 
-const initialPage = location.hash.replace("#","");
-if (pages.includes(initialPage)) showPage(initialPage);
-renderJobs();
+  try {
+    await navigator.clipboard.writeText(preparedContactMessage);
+    status.textContent = 'Message copied! You can now paste it wherever you want to send it.';
+  } catch (error) {
+    status.textContent = 'Automatic copying was unavailable. Select and copy the message displayed above.';
+  }
+}
 </script>
+
 </body>
 </html>
